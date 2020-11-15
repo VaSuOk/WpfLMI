@@ -23,7 +23,7 @@ namespace WpfLMI
         public MainWindow()
         {
             InitializeComponent();
-            DataContext = new ApplicationViewModel();
+            DataContext = new ApplicationViewModel();  
         }
     }
 }
