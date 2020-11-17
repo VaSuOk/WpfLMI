@@ -27,32 +27,38 @@
             <RowDefinition Height="*" />
             <RowDefinition Height="0.2*" />
         </Grid.RowDefinitions>
-        <ListBox Grid.Column="0" ItemsSource="{Binding Phones}"
-                 SelectedItem="{Binding SelectedPhone}">
+        <ListBox Grid.Column="0" ItemsSource="{Binding Teacher}"
+                 SelectedItem="{Binding SelectedTeacher}">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Margin="5">
-                        <TextBlock FontSize="18" Text="{Binding Path=Title}" />
-                        <TextBlock Text="{Binding Path=Company}" />
-                        <TextBlock Text="{Binding Path=Price}" />
+                        <TextBlock FontSize="18" Text="{Binding Path=Name}" />
+                        <TextBlock Text="{Binding Path=Surname}" />
+                        <TextBlock Text="{Binding Path=Posada}" />
                     </StackPanel>
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
         <StackPanel Grid.Row="1" Orientation="Horizontal">
-            <Button Command="{Binding AddCommand}">+</Button>
+            <Button Command="{Binding AddCommand}" Width="53">ADD</Button>
             <Button Command="{Binding RemoveCommand}"
-                    CommandParameter="{Binding SelectedPhone}">-</Button>
+                    CommandParameter="{Binding SelectedTeacher}" Width="56">Delete</Button>
         </StackPanel>
 
-        <StackPanel Grid.Column="1" DataContext="{Binding SelectedPhone}">
+        <StackPanel Grid.Column="1" DataContext="{Binding SelectedTeacher}">
             <TextBlock Text="Выбранный элемент"  />
-            <TextBlock Text="Модель" />
-            <TextBox Text="{Binding Title, UpdateSourceTrigger=PropertyChanged}" />
-            <TextBlock Text="Производитель" />
-            <TextBox Text="{Binding Company, UpdateSourceTrigger=PropertyChanged}" />
-            <TextBlock Text="Цена" />
-            <TextBox Text="{Binding Price, UpdateSourceTrigger=PropertyChanged}" />
+            <TextBlock Text="Name" />
+            <TextBox Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}" />
+            <TextBlock Text="Surname" />
+            <TextBox Text="{Binding Surname, UpdateSourceTrigger=PropertyChanged}" />
+            <TextBlock Text="Birthday" />
+            <TextBox Text="{Binding Birthday, UpdateSourceTrigger=PropertyChanged}" />
+            <TextBlock Text="Posada" />
+            <TextBox Text="{Binding Posada, UpdateSourceTrigger=PropertyChanged}" />
+            <TextBlock Text="cathedra" />
+            <TextBox Text="{Binding Cathedra, UpdateSourceTrigger=PropertyChanged}" />
+            <TextBlock Text="Навчальний заклад" />
+            <TextBox Text="{Binding Institution_of_higher_education, UpdateSourceTrigger=PropertyChanged}" />
         </StackPanel>
     </Grid>
 </Window>

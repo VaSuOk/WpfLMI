@@ -6,8 +6,8 @@ namespace WpfLMI
 {
     public class ApplicationViewModel : INotifyPropertyChanged
     {
-        private Phone selectedPhone;
-        public ObservableCollection<Phone> Phones { get; set; }
+        private Teacher selectedTeacher;
+        public ObservableCollection<Teacher> Teacher { get; set; }
 
         // команда добавления нового объекта
         private RelayCommand addCommand;
@@ -18,9 +18,9 @@ namespace WpfLMI
                 return addCommand ??
                   (addCommand = new RelayCommand(obj =>
                   {
-                      Phone phone = new Phone();
-                      Phones.Insert(0, phone);
-                      SelectedPhone = phone;
+                      Teacher teacher = new Teacher();
+                      Teacher.Insert(0, teacher);
+                      SelectedTeacher = teacher;
                   }));
             }
         }
@@ -34,34 +34,33 @@ namespace WpfLMI
                 return removeCommand ??
                   (removeCommand = new RelayCommand(obj =>
                   {
-                      Phone phone = obj as Phone;
-                      if (phone != null)
+                      Teacher teacher = obj as Teacher;
+                      if (teacher != null)
                       {
-                          Phones.Remove(phone);
+                          Teacher.Remove(teacher);
                       }
                   },
-                 (obj) => Phones.Count > 0));
+                 (obj) => Teacher.Count > 0));
             }
         }
 
-        public Phone SelectedPhone
+        public Teacher SelectedTeacher
         {
-            get { return selectedPhone; }
+            get { return selectedTeacher; }
             set
             {
-                selectedPhone = value;
-                OnPropertyChanged("SelectedPhone");
+                selectedTeacher = value;
+                OnPropertyChanged("SelectedTeacher");
             }
         }
 
         public ApplicationViewModel()
         {
-            Phones = new ObservableCollection<Phone>
+            Teacher = new ObservableCollection<Teacher>
             {
-                new Phone { Title="iPhone 7", Company="Apple", Price=56000 },
-                new Phone {Title="Galaxy S7 Edge", Company="Samsung", Price =60000 },
-                new Phone {Title="Elite x3", Company="HP", Price=56000 },
-                new Phone {Title="Mi5S", Company="Xiaomi", Price=35000 }
+                new Teacher { Name="Oksana", Surname="Ivakova", Birthday="03.12.2001", Cathedra="Математика", Posada="Вчитель", Institution_of_higher_education="Політех" },
+                new Teacher { Name="Тарас", Surname="Копченко", Birthday="04.04.2000", Cathedra="Фізкультура", Posada="Вчитель", Institution_of_higher_education="Університет" },
+                new Teacher { Name="Петро", Surname="Онуфко", Birthday="05.03.1999", Cathedra="Укр мова", Posada="Вчитель", Institution_of_higher_education="Інститут" },
             };
         }
 
